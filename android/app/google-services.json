@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "693946338720",
+    "project_id": "makemyhome-27df4",
+    "storage_bucket": "makemyhome-27df4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693946338720:android:4ae2019ab9511fd3c068c5",
+        "android_client_info": {
+          "package_name": "com.example.makemyhome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693946338720-nk2dm1f9nkfloch0lbu37v5ne34vsmph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG5R605ffMuCxdSMgm2Am9tDsQBgkG_do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693946338720-nk2dm1f9nkfloch0lbu37v5ne34vsmph.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "693946338720-qd4houcnl7f4pbn5j83cq0elb5ee9f5v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.makemyhome"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
