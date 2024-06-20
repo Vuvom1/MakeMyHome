@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:makemyhome/common/widgets/images/rounded_image.dart';
@@ -21,7 +20,7 @@ class ProductCardHoriontal extends StatelessWidget {
     final dark = CustomHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      // onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
           width: 310,
           padding: const EdgeInsets.all(1),
@@ -49,7 +48,7 @@ class ProductCardHoriontal extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: CustomSize.sm, vertical: CustomSize.xs),
                         child: Text(
-                          '25%',
+                          '',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!

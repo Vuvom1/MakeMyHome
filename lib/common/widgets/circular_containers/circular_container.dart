@@ -8,7 +8,7 @@ class TCircularContainer extends StatelessWidget {
   final double padding;
   final double margin;
   final Widget? child;
-  final Color backGroundColor;
+  final Color backgroundColor;
 
   const TCircularContainer({
     super.key, 
@@ -18,7 +18,7 @@ class TCircularContainer extends StatelessWidget {
     this.padding = 0, 
     this.margin = 0, 
     this.child, 
-    this.backGroundColor = CustomColor.white,
+    this.backgroundColor = CustomColor.white,
     });
   
   @override
@@ -30,7 +30,7 @@ class TCircularContainer extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-        color: backGroundColor,
+        color: backgroundColor,
       ),
       child: child,
     );

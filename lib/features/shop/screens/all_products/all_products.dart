@@ -32,10 +32,10 @@ class AllProductsScreen extends StatelessWidget {
           
                 const SizedBox(height: CustomSize.spaceBtwSections,),
           
-                TGridLayout(
-                  itemCount: 10, 
-                  itemBuilder: (_, index) => const ProductCardVertical(),
-                  )
+                // TGridLayout(
+                //   itemCount: 10, 
+                //   itemBuilder: (_, index) => const ProductCardVertical(),
+                //   )
             ],
           ),
         ),

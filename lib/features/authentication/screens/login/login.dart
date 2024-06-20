@@ -63,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                             obscureText: controller.hidePassword.value,
                             decoration: InputDecoration(
                                 labelText: TextString.password,
-                                prefix: Icon(Iconsax.password_check),
+                                prefixIcon: const Icon(Iconsax.password_check),
                                 suffixIcon: IconButton(
                                     onPressed: () => controller.hidePassword
                                         .value = !controller.hidePassword.value,

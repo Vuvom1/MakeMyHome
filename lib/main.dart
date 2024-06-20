@@ -5,6 +5,7 @@ import 'package:makemyhome/binding/general_binding.dart';
 import 'package:makemyhome/data/responsitories/authentication/authentication_responsitory.dart';
 import 'package:makemyhome/features/authentication/screens/login/login.dart';
 import 'package:makemyhome/firebase_options.dart';
+import 'package:makemyhome/routes/app_routes.dart';
 import 'package:makemyhome/utils/themes/theme.dart';
 
 Future<void> main() async {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Make My Home',
       theme: AppTheme.lightTheme,
       initialBinding: GeneralBinding(),
+      getPages: AppRoutes.pages,
       home: const LoginScreen(),
     );
   }

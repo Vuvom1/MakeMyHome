@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:makemyhome/data/responsitories/categories/category_repository.dart';
+import 'package:makemyhome/data/responsitories/product/product_respository.dart';
 import 'package:makemyhome/features/shop/models/category_model.dart';
+import 'package:makemyhome/features/shop/models/product_model.dart';
 import 'package:makemyhome/utils/popups/loader.dart';
 
 class CategoryController extends GetxController {
@@ -10,6 +12,7 @@ class CategoryController extends GetxController {
   final _categoryRepository = Get.put(CategoryRepository());
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
+  final categoryController = Get.put(CategoryRepository());
 
   @override
   void onInit() {
@@ -32,4 +35,14 @@ class CategoryController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  Future<List<ProductModel>> getCategoryProduct({required String categoryId, int limit = 10}) async {
+    try {
+      final products = ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoader.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    } 
+  } 
 }
