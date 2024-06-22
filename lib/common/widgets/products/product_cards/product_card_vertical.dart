@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:makemyhome/common/widgets/images/rounded_image.dart';
+import 'package:makemyhome/common/widgets/products/product_cards/product_button.dart/product_card_add_to_cart.dart';
 import 'package:makemyhome/common/widgets/products/product_cards/product_text/product_price_text.dart';
 import 'package:makemyhome/common/widgets/products/product_cards/product_text/product_title_text.dart';
 import 'package:makemyhome/common/widgets/rounded_containers/rounded_container.dart';
@@ -116,19 +117,7 @@ class ProductCardVertical extends StatelessWidget {
                           )
                         ]),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: CustomColor.black,
-                        ),
-                        child: SizedBox(
-                            width: CustomSize.iconLg * 1.2,
-                            height: CustomSize.iconLg * 1.2,
-                            child: Center(
-                                child: const Icon(
-                              Iconsax.add,
-                              color: CustomColor.white,
-                            ))),
-                      )
+                      ProductCardAddToCartButton(product: product),
                     ],
                   ),
                 ],
@@ -140,3 +129,4 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
+

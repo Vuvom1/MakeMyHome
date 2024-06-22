@@ -7,8 +7,11 @@ import 'package:makemyhome/utils/themes/constants/custom_size.dart';
 
 class ProductQuantityWithAddAndMinusButton extends StatelessWidget {
   const ProductQuantityWithAddAndMinusButton({
-    super.key,
+    super.key, required this.quantity, this.add, this.remove,
   });
+
+  final int quantity;
+  final VoidCallback? add, remove;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +21,7 @@ class ProductQuantityWithAddAndMinusButton extends StatelessWidget {
           icon: Iconsax.minus,
           width: 32,
           height: 32,
+          onPressed: remove,
           size: CustomSize.md,
           color: CustomHelperFunctions.isDarkMode(context) ? CustomColor.white : CustomColor.black,
           backGroundColor: CustomHelperFunctions.isDarkMode(context) ? CustomColor.darkGrey : CustomColor.light,
@@ -25,7 +29,7 @@ class ProductQuantityWithAddAndMinusButton extends StatelessWidget {
     
           const SizedBox(width: CustomSize.spaceBtwItem,),
     
-          Text('2', style: Theme.of(context).textTheme.titleSmall,),
+          Text(quantity.toString(), style: Theme.of(context).textTheme.titleSmall,),
     
           const SizedBox(width: CustomSize.spaceBtwItem),
     
@@ -33,6 +37,7 @@ class ProductQuantityWithAddAndMinusButton extends StatelessWidget {
           icon: Iconsax.add,
           width: 32,
           height: 32,
+          onPressed: add,
           size: CustomSize.md,
           color: CustomHelperFunctions.isDarkMode(context) ? CustomColor.white : CustomColor.black,
           backGroundColor: CustomHelperFunctions.isDarkMode(context) ? CustomColor.darkGrey : CustomColor.yellow,

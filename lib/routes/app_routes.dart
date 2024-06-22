@@ -4,7 +4,7 @@ import 'package:makemyhome/features/authentication/screens/signup/widgets/signup
 import 'package:makemyhome/features/authentication/screens/signup/widgets/verify_email.dart';
 import 'package:makemyhome/features/personalization/screens/profile/profile.dart';
 import 'package:makemyhome/features/personalization/screens/setting/setting.dart';
-import 'package:makemyhome/features/shop/screens/address/address.dart';
+import 'package:makemyhome/features/personalization/screens/address/address.dart';
 import 'package:makemyhome/features/shop/screens/cart/cart.dart';
 import 'package:makemyhome/features/shop/screens/checkout/checkout.dart';
 import 'package:makemyhome/features/shop/screens/home/home.dart';

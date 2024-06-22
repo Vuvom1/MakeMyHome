@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:makemyhome/common/widgets/appbar/appbar.dart';
 import 'package:makemyhome/features/personalization/controllers/user_controller.dart';
 import 'package:makemyhome/features/shop/screens/cart/cart.dart';
+import 'package:makemyhome/features/shop/screens/home/widgets/cart_counter_icon.dart';
 import 'package:makemyhome/utils/themes/constants/colors.dart';
 import 'package:makemyhome/utils/themes/constants/image_strings.dart';
 
@@ -26,17 +27,7 @@ class THomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-        Stack(
-          children: [
-            IconButton(
-                onPressed: () => 
-                  Get.to(() => CartScreen()),
-                icon: const Icon(
-                  Iconsax.shopping_bag,
-                  color: CustomColor.black,
-                )),
-          ],
-        )
+        CartCounterIcon(iconColor: CustomColor.white, counterBgColor: CustomColor.black, counterTextColor: Colors.white),
       ],
     );
   }

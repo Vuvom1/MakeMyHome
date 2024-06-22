@@ -9,7 +9,8 @@ import 'package:makemyhome/common/widgets/list_tiles/setting_menu_tile.dart';
 import 'package:makemyhome/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:makemyhome/common/widgets/texts/section_heading.dart';
 import 'package:makemyhome/features/personalization/screens/profile/profile.dart';
-import 'package:makemyhome/features/shop/screens/address/address.dart';
+import 'package:makemyhome/features/personalization/screens/address/address.dart';
+import 'package:makemyhome/features/shop/screens/cart/cart.dart';
 import 'package:makemyhome/features/shop/screens/order/order.dart';
 import 'package:makemyhome/utils/themes/constants/colors.dart';
 import 'package:makemyhome/utils/themes/constants/custom_size.dart';
@@ -69,6 +70,7 @@ class SettingScreen extends StatelessWidget {
                   icon: Iconsax.shopping_cart,
                   title: 'My Cart',
                   subtitle: 'Add, remove product and move to checkout',
+                  onTap: () => Get.to(() => CartScreen()),
                 ),
                 SettingMenuTile(
                   icon: Iconsax.bag_tick,

@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:makemyhome/features/shop/controllers/cart_controller.dart';
 import 'package:makemyhome/features/shop/controllers/product/images_controller.dart';
 import 'package:makemyhome/features/shop/models/product_model.dart';
 import 'package:makemyhome/features/shop/models/product_varient_model.dart';
 
 class VariationController extends GetxController {
   static VariationController get instance => Get.find();
+  
   RxMap selectedAttributes = {}.obs;
   RxString variationStockStatus = ''.obs;
   Rx<ProductVariationModel> selectedVariation =
@@ -28,7 +30,13 @@ class VariationController extends GetxController {
           selectedVariation.image;
     }
 
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController.getVariationQuantityInCart(product.id, selectedVariation.id);
+    }
+
     this.selectedVariation.value = selectedVariation;
+    getProductVariationStockStatus();
   }
 
   bool _isSameAttributeValues(Map<String, dynamic> variationAttributes,
@@ -64,5 +72,11 @@ class VariationController extends GetxController {
   void getProductVariationStockStatus() {
     variationStockStatus.value =
         selectedVariation.value.stock > 0 ? 'In Stock' : 'Out of Stock';
+  }
+
+  void resetSelectedAttributes() {
+    selectedAttributes.clear();
+    variationStockStatus.value = '';
+    selectedVariation.value = ProductVariationModel.empty(); 
   }
 }

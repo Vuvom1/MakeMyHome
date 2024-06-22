@@ -48,4 +48,8 @@ class TLoader {
       icon: const Icon(Iconsax.warning_2, color: CustomColor.white,)
       );
   }
+
+  static customToast({required message}) {
+    
+  }
 }

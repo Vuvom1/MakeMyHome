@@ -52,7 +52,7 @@ class ProductRepository extends GetxController {
 
       return products;
     } catch (e) {
-      throw 'Something went wrong while fetching categories ${e.toString()}';
+      throw 'Something went wrong when fetching categories ${e.toString()}';
     }
   }
 }

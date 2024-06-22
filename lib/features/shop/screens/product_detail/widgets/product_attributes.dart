@@ -26,7 +26,7 @@ class ProductAttributes extends StatelessWidget {
 
     return Obx( () =>  Column(
         children: [
-          // if (controller.selectedVariation.value.id.isNotEmpty)
+          if (controller.selectedVariation.value.id.isNotEmpty)
             TRoundedContainer(
               padding: const EdgeInsets.all(CustomSize.md),
               backgroundColor: dark ? CustomColor.darkGrey : CustomColor.grey,
