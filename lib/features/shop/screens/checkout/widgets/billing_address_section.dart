@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:makemyhome/common/widgets/rounded_containers/rounded_container.dart';
 import 'package:makemyhome/common/widgets/texts/section_heading.dart';
+import 'package:makemyhome/features/personalization/controllers/address_controller.dart';
 import 'package:makemyhome/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:makemyhome/utils/helpers/helper_functions.dart';
 import 'package:makemyhome/utils/themes/constants/colors.dart';
@@ -12,6 +13,7 @@ class BillingAddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = AddressController.instance;
     final dark = CustomHelperFunctions.isDarkMode(context);
 
     return Column(
@@ -24,7 +26,7 @@ class BillingAddressSection extends StatelessWidget {
           onPressed: () {},
         ),
         Text(
-          'Minh vu',
+          controller.selectedAddress.value.name,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(
@@ -39,7 +41,7 @@ class BillingAddressSection extends StatelessWidget {
           const SizedBox(
             width: CustomSize.spaceBtwItem,
           ),
-          Text('Empty phone number', style: Theme.of(context).textTheme.bodyMedium),
+          Text(controller.selectedAddress.value.phoneNumber, style: Theme.of(context).textTheme.bodyMedium),
         ]),
         const SizedBox(
           height: CustomSize.spaceBtwItem / 2,
@@ -53,7 +55,7 @@ class BillingAddressSection extends StatelessWidget {
           const SizedBox(
             width: CustomSize.spaceBtwItem,
           ),
-          Text('Empty Address', style: Theme.of(context).textTheme.bodyMedium),
+          Text(controller.selectedAddress.value.toString(), style: Theme.of(context).textTheme.bodyMedium),
         ]),
         const SizedBox(
           height: CustomSize.spaceBtwItem / 2,

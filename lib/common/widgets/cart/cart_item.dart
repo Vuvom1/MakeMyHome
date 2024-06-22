@@ -6,7 +6,6 @@ import 'package:makemyhome/features/shop/models/cart/cart_item_model.dart';
 import 'package:makemyhome/utils/helpers/helper_functions.dart';
 import 'package:makemyhome/utils/themes/constants/colors.dart';
 import 'package:makemyhome/utils/themes/constants/custom_size.dart';
-import 'package:makemyhome/utils/themes/constants/image_strings.dart';
 
 class CartItem extends StatelessWidget {
   final CartItemModel item;

@@ -7,7 +7,6 @@ class CartItemModel {
   String? image;
   int quantity;
   String variationId;
-  String? brandName;
   Map<String, String>? selectedVariation;
 
   CartItemModel({
@@ -30,7 +29,6 @@ class CartItemModel {
       'image': image,
       'quantity': quantity,
       'variationId': variationId,
-      'brandName': brandName,
       'selectedVariation': selectedVariation,
   };
   } 

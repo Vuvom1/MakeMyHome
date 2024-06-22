@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:makemyhome/common/widgets/rounded_containers/rounded_container.dart';
+import 'package:makemyhome/features/shop/controllers/order_controller.dart';
+import 'package:makemyhome/utils/helpers/cloud_helper_functions.dart';
 import 'package:makemyhome/utils/helpers/helper_functions.dart';
 import 'package:makemyhome/utils/themes/constants/colors.dart';
 import 'package:makemyhome/utils/themes/constants/custom_size.dart';
@@ -12,118 +16,135 @@ class OrderListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OrderController());
     final dark = CustomHelperFunctions.isDarkMode(context);
 
-    return ListView.separated(
-      separatorBuilder: (_, __) => const SizedBox(height: CustomSize.spaceBtwItem,),
-      itemCount: 6,
-      itemBuilder: (_, index) => TRoundedContainer(
-        padding: EdgeInsets.all(CustomSize.md),
-        showBorder: true,
-        backgroundColor: dark ? CustomColor.black : CustomColor.white,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
+    return FutureBuilder(
+      future: controller.fetchUseOrders(),
+      builder: (_, snapshot) {
+        final emptyWidget = Center(child: Text('Orders is Empty'));
+
+        final response = CloudHelperFunctions.checkMUltiRecordState(snapshot: snapshot, nothingFound: emptyWidget);
+        if (response != null) return response;
+
+        final orders = snapshot.data!;
+        return ListView.separated(
+          separatorBuilder: (_, __) => const SizedBox(
+            height: CustomSize.spaceBtwItem,
+          ),
+          itemCount: orders.length,
+          itemBuilder: (_, index) {
+            final order = orders[index];
+
+            return TRoundedContainer(
+            padding: EdgeInsets.all(CustomSize.md),
+            showBorder: true,
+            backgroundColor: dark ? CustomColor.black : CustomColor.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                    child: Row(
+                Row(
                   children: [
-                    Icon(Iconsax.ship),
-                    SizedBox(
-                      width: CustomSize.spaceBtwItem / 2,
-                    ),
                     Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Processing',
-                            style: Theme.of(context).textTheme.bodyLarge!.apply(
-                                color: CustomColor.yellow, fontWeightDelta: 1),
+                        child: Row(
+                      children: [
+                        Icon(Iconsax.ship),
+                        SizedBox(
+                          width: CustomSize.spaceBtwItem / 2,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                order.orderStatusText,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .apply(
+                                        color: CustomColor.yellow,
+                                        fontWeightDelta: 1),
+                              ),
+                              Text(
+                                order.formattedOrderDate,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
+                            ],
                           ),
-                          Text(
-                            '04 Nov 2024',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        ],
-                      ),
-                    )
+                        )
+                      ],
+                    )),
+                    IconButton(
+                        onPressed: () {}, icon: Icon(Iconsax.arrow_right_34))
                   ],
-                )),
-                IconButton(onPressed: (){}, icon: Icon(Iconsax.arrow_right_34))
+                ),
+                const SizedBox(
+                  height: CustomSize.spaceBtwItem,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Row(
+                      children: [
+                        Icon(Iconsax.tag),
+                        SizedBox(
+                          width: CustomSize.spaceBtwItem / 2,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Order',
+                                style: Theme.of(context).textTheme.labelMedium,
+                              ),
+                              Text(
+                                order.id,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+                    Expanded(
+                        child: Row(
+                      children: [
+                        Icon(Iconsax.tag),
+                        SizedBox(
+                          width: CustomSize.spaceBtwItem / 2,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Shipping Date',
+                                style: Theme.of(context).textTheme.labelMedium,
+                              ),
+                              Text(
+                                order.formattedDeliveryDate,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+                  ],
+                ),
               ],
             ),
-      
-            const SizedBox(height: CustomSize.spaceBtwItem,),
-      
-            Row(
-              children: [
-                Expanded(
-                    child: Row(
-                  children: [
-                    Icon(Iconsax.tag),
-                    SizedBox(
-                      width: CustomSize.spaceBtwItem / 2,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Order',
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                          Text(
-                            '[#23453]',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        ],
-                      ),
-                    ),
-      
-                    
-      
-      
-                  ],
-                )),
-      
-                Expanded(
-                    child: Row(
-                  children: [
-                    Icon(Iconsax.tag),
-                    SizedBox(
-                      width: CustomSize.spaceBtwItem / 2,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Shipping Date',
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                          Text(
-                            '03 Feb 2024',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        ],
-                      ),
-                    ),
-      
-                    
-      
-      
-                  ],
-                )),
-              ],
-            ),
-          ],
-        ),
-      ),
+          );
+          } 
+        );
+      },
     );
   }
 }

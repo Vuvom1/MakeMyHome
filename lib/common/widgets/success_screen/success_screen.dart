@@ -8,7 +8,7 @@ class SuccessScreen extends StatelessWidget {
   final String image;
   final String title;
   final String subTitle;
-  final Function()? onPressed;
+  final VoidCallback onPressed;
 
   const SuccessScreen(
       {super.key,
@@ -20,13 +20,6 @@ class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: onPressed,
-              icon: const Icon(CupertinoIcons.clear))
-        ],
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(CustomSize.defaultSpace),

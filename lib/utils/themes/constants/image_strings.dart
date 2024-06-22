@@ -17,6 +17,8 @@ class ImageString {
   static const String product2 = "assets/images/products/sofa_2.png";
 
   static const String paypal = "assets/images/payments/paypal.png";
+  static const String cash = "assets/images/payments/cash.png";
+
   static const String payment_success = "assets/images/payments/successful.png";
 
 }

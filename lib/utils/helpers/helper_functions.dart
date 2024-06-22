@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:intl/intl.dart';
 
 class CustomHelperFunctions {
   static Color? getColor(String value) {
@@ -69,5 +70,11 @@ class CustomHelperFunctions {
 
   static double screenWidth() {
     return MediaQuery.of(Get.context!).size.width;
+  }
+
+  static getFormattedDate(DateTime date) {
+   date ??= DateTime.now();
+
+   return DateFormat('dd-MM-yyyy').format(date);
   }
 }
